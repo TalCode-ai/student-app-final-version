@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Students App</title>
+  <script src="/static/axios.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/main.js"></script>
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <header class="main-header">
+      <div class="header-content">
+        <div class="header-title">
+          <span class="header-icon">🎓</span>
+          <h1>Students Application</h1>
+        </div>
+        <div class="theme-switcher">
+          <label for="themeSelect">🎨 Theme:</label>
+          <select id="themeSelect">
+            <option value="theme-dark">Dark (Default)</option>
+            <option value="theme-light">Light</option>
+            <option value="theme-ocean">Ocean</option>
+            <option value="theme-forest">Forest</option>
+            <option value="theme-sunset">Sunset</option>
+            <option value="theme-midnight">Midnight Purple</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <section class="form-card">
+        <h2 class="section-title">Student Details</h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="idBox">Student ID</label>
+            <input id="idBox" type="number" placeholder="e.g. 101">
+          </div>
+          <div class="form-group">
+            <label for="nameBox">Full Name</label>
+            <input id="nameBox" type="text" placeholder="e.g. John Doe">
+          </div>
+          <div class="form-group">
+            <label for="ageBox">Age</label>
+            <input id="ageBox" type="number" placeholder="e.g. 22">
+          </div>
+        </div>
+
+        <div class="buttons-area">
+          <button id="btAdd" class="btn btn-add">
+            <span>➕</span> Add Student
+          </button>
+          <button id="btUpdate" class="btn btn-update">
+            <span>✏️</span> Update Student
+          </button>
+          <button id="btDelete" class="btn btn-delete">
+            <span>🗑️</span> Delete Student
+          </button>
+        </div>
+      </section>
+
+      <section class="table-card">
+        <h2 class="section-title">Students List</h2>
+        <div class="table-wrapper">
+          <table id="student-table">
+            <thead id="student-table-head">
+              <tr id="student-table-headers">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="main-footer">
+      <p>© 2024 Students Application. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
