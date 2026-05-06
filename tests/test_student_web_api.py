@@ -158,6 +158,7 @@ def test_update_student_not_found(base_url):
     assert "message" in data
 
 # מקרה של הוספת סטודנט כאשר הגיל הוא טקסט במקום מספר
+@pytest.mark.jira_key("SAFV-6")
 @pytest.mark.xfail(reason="Known bug: API returns 500 instead of 400 when age is text")
 def test_add_student_text_age_bug(base_url):
     student = {"name": "Bad Age", "age": "abc"}

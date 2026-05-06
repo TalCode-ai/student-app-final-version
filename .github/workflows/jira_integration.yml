@@ -1,0 +1,52 @@
+
+# Workflow name displayed in GitHub Actions
+name: Student App CI to Jira
+# Trigger: Run this workflow on every push to the main branch
+on:
+ push:
+   branches: [ "main" ]
+
+
+jobs:
+ # The identifier for our job
+ test-and-report:
+   # Environment: The virtual machine type (Runner)
+   runs-on: ubuntu-latest
+   steps:
+     # Step 1: Clone the repository code onto the runner
+     - name: Checkout code
+       uses: actions/checkout@v4
+
+
+     # Step 2: Install the 'uv' package manager
+     - name: Install uv
+       uses: astral-sh/setup-uv@v3
+
+
+     # Step 3: Setup the specific Python version needed
+     - name: Set up Python
+       run: uv python install 3.9
+
+
+     # Step 4: Install project dependencies (from pyproject.toml)
+     - name: Install dependencies
+       run: uv sync
+
+
+     # Step 5: Execute tests and generate a JUnit XML report
+     # 'continue-on-error' ensures reporting happens even if tests fail
+     - name: Run Tests
+       run: uv run pytest --junitxml=report.xml
+       continue-on-error: true
+
+
+     # Step 6: Send the test results (XML) to Jira Xray
+     - name: Report Results to Jira (Xray)
+       uses: mikepenz/xray-action@v3
+       with:
+         # Credentials stored securely in GitHub Secrets
+         username: ${{ secrets.XRAY_CLIENT_ID }}
+         password: ${{ secrets.XRAY_CLIENT_SECRET }}
+         testFormat: 'junit'
+         testPaths: 'report.xml' # file created on root of the remote runner
+         projectKey: 'SAFV-6'
