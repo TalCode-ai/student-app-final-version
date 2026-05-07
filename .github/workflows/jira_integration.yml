@@ -49,4 +49,5 @@ jobs:
          password: ${{ secrets.XRAY_CLIENT_SECRET }}
          testFormat: 'junit'
          testPaths: 'report.xml' # file created on root of the remote runner
-         projectKey: 'SAFV-6'
+         projectKey: 'SAFV'
+         xrayBaseUrl: 'https://eu.xray.cloud.getxray.app/'
