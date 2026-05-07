@@ -159,7 +159,6 @@ def test_update_student_not_found(base_url):
 
 # -מקרה של הוספת סטודנט כאשר הגיל הוא טקסט ולא מספר
 # באג מוכר: API מחזיר הודעת שגיאה 500 במקום 400)
-@pytest.mark.jira_key("SAFV-6")
 def test_add_student_text_age_bug(base_url):
     student = {"name": "Bad Age", "age": "abc"}
 
