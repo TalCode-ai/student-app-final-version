@@ -168,7 +168,6 @@ def test_add_student_text_age_bug(base_url):
     assert res.status_code == 400
 
 #  בדיקת מקרי קצה של עדכון סטודנט - באג: API מחזיר שגיאה לא נכונה
-
 @pytest.mark.xfail(reason="Known bug: API returns 500 instead of 400 for invalid update input")
 @pytest.mark.parametrize(
     "updated_student",

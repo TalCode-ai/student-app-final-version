@@ -245,7 +245,7 @@ def test_update_student_negative(mock_update_student, student):
 
 
 # מחיקת סטודנט קיים
-
+@pytest.mark.jira_key("SAFV-5")
 @patch("app.service.db.delete_student")
 def test_delete_student_positive(mock_delete_student: Mock):
     # Arrange
