@@ -49,3 +49,5 @@ jobs:
          testFormat: 'junit'
          testPaths: 'report.xml' # file created on root of the remote runner
          projectKey: 'SAFV'
+         xrayBaseUrl: 'https://xray.cloud.getxray.app/'
+
